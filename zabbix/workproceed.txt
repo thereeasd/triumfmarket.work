@@ -3,7 +3,7 @@
 - 4cpu 8threads 8gb RAM 64HDD
 - Ubuntu 20.04 Live Server;
 - ip = 10.10.0.30, dnsname = srv-mon-1;
-- UnixFireWall allow 22, 80, 403, 10500, 10501 tcp/udp;
+- UnixFireWall allow 22, 80, 403, 10050, 10051 tcp/udp;
 - MariaDB 8.4;
 - PHP-7.2;
 - Nginx (будет настроен под https/403/ssl);
@@ -19,5 +19,4 @@
 - установлен api;
 - активирован скрипт для curl запроса;
 - бот стартанёт когда первый хост будет полностью отлажен, группа осталась та же.
-
-
+4) Добавлена папка с конфигурацией агента и вложенными скриптами powershell

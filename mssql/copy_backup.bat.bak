@@ -1,12 +1,12 @@
 @echo off
 chcp 1251
-REM input
+# input
 Setlocal EnableDelayedExpansion
 set Backup_folder_2=Z:\base\
 set srv_folder=C:\backup\
 set Backup_folder=O:\
 set CompleteUpload=Z:\completeUpload.txt
-REM checkout
+# checkout
 if exist %CompleteUpload% (
   del %CompleteUpload%
 )
@@ -20,14 +20,14 @@ if exist %Backup_folder_2% (
  rmdir /s /q %Backup_folder_2%
 )
 mkdir %Backup_folder_2%
-REM cycle body
+# cycle body
 for /f "usebackq tokens=*" %%a in (`dir /b %Backup_folder%`) do call :DelFromBackup_folder "%%a"
 for /f "usebackq tokens=*" %%c in (`dir /b %srv_folder%`) do call :DelFromsrv_folder "%%c"
 robocopy %srv_folder% %Backup_folder_2% /s /LOG+:%Backup_folder_2%robolog.txt
 copy nul %CompleteUpload%
 robocopy %srv_folder% %Backup_folder%  /s /log+:%Backup_folder%robolog.txt
 goto :eof
-REM function
+# function
 :DelFromBackup_folder
 set /a y=0
 for /f "usebackq tokens=*" %%d in (`dir /t:w /o:-d /b %Backup_folder%%~1%`) do (
